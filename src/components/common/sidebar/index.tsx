@@ -5,18 +5,18 @@ import Drawer, { DrawerProps } from "@mui/material/Drawer";
 const drawerWidth = 300;
 
 interface SidebarPropsType extends DrawerProps {
-  toggleSidebar: (flag: boolean) => void;
+  toggle: () => void;
   children: React.ReactNode;
   color?: string;
 }
 
 export default function Sidebar(props: SidebarPropsType) {
-  const { open, toggleSidebar, children, color = "#f7f8fa" } = props;
+  const { open, toggle, children, color = "#f7f8fa" } = props;
 
   return (
     <Drawer
       open={open}
-      onClose={toggleSidebar}
+      onClose={toggle}
       variant="persistent"
       sx={{
         width: open ? drawerWidth : null,

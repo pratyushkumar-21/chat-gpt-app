@@ -1,5 +1,5 @@
 import { Stack, Typography } from "@mui/material";
-import { ChatHistoryResponseType } from "../../services/types";
+import { ChatHistoryResponseType } from "../../../services/types";
 
 type ChatHistoryCardPropsType = {
   chats: ChatHistoryResponseType[];

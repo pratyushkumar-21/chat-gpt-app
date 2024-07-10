@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
-import LeftSidebar from "../../components/chat_gpt/LeftSidebar";
+import LeftSidebar from "../../components/chat_gpt/left_sidebar";
 import ChatContext from "./context";
 import { ChatHistoryResponseType } from "../../services/types";
 

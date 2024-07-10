@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 import { Box, Alert, Stack } from "@mui/material";
 import { memo } from "react";
-import ChatContext from "../../pages/chat_gpt/context";
+import ChatContext from "../../../pages/chat_gpt/context";
 import ChatHistoryLoader from "./ChatHistoryLoader";
 import ChatHistoryCard from "./ChatHistoryCard";
-import { fetchChatHistory } from "../../services/api";
-import { ChatHistoryResponseType } from "../../services/types";
+import { fetchChatHistory } from "../../../services/api";
+import { ChatHistoryResponseType } from "../../../services/types";
 
 function ChatHistoryList() {
   const { chatHistories, setChatHistories } = useContext(ChatContext);

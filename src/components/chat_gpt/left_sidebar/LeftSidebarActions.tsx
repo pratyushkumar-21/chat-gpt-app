@@ -8,10 +8,10 @@ import {
   ListItemText,
 } from "@mui/material";
 
-import { ReactComponent as MessageIcon } from "../../assets/icons/message_icon.svg";
-import { ReactComponent as BookIcon } from "../../assets/icons/book_icon.svg";
-import { ReactComponent as GridIcon } from "../../assets/icons/grid_icon.svg";
-import { ReactComponent as CommandIcon } from "../../assets/icons/command_icon.svg";
+import { ReactComponent as MessageIcon } from "../../../assets/icons/message_icon.svg";
+import { ReactComponent as BookIcon } from "../../../assets/icons/book_icon.svg";
+import { ReactComponent as GridIcon } from "../../../assets/icons/grid_icon.svg";
+import { ReactComponent as CommandIcon } from "../../../assets/icons/command_icon.svg";
 
 function LeftSidebarActions() {
   const items = [
