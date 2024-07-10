@@ -1,8 +1,7 @@
 import { memo, useState } from "react";
 import { Box, InputBase } from "@mui/material";
-import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
-import { ReactComponent as CommandIcon } from "../../../assets/icons/command.svg";
-import styles from "./search_input.module.css";
+import { ReactComponent as SearchIcon } from "../../../assets/icons/search_icon.svg";
+import { ReactComponent as CommandIcon } from "../../../assets/icons/command_icon.svg";
 
 function SearchInput() {
   const [search, setSearch] = useState("");
@@ -24,7 +23,7 @@ function SearchInput() {
         value={search}
         onChange={handleSearchChange}
       />
-      <Box className={`keyboard-icons ${styles.right_icons_container}`}>
+      <Box className={`keyboard-icons keyboard-icons-active`}>
         <CommandIcon /> K
       </Box>
     </Box>
