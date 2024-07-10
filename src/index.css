@@ -2,6 +2,7 @@
   --white-color: white;
   --light-blue-color: #666f8d;
   --light-grey-color: #f0f2f5;
+  --box-shadow: 0px 1px 3px 0px #19213d1a;
 }
 
 * {
@@ -10,8 +11,8 @@
 
 body {
   margin: 0;
-  background-color: #202020;
-  color: #eee;
+  /* background-color: #202020;
+  color: #eee; */
 }
 
 .keyboard-icons {
@@ -28,7 +29,7 @@ body {
 
 .left-sidebar-box-component-wrapper {
   border: 1px solid var(--light-grey-color);
-  box-shadow: 1px 5px 5px #eee;
+  box-shadow: var(--box-shadow);
   min-height: 50px;
   border-radius: 8px;
   padding: 5px;
@@ -36,12 +37,9 @@ body {
   background-color: var(--white-color);
 }
 
-.sidebar-icon {
-  cursor: pointer;
-}
-
 .left-sidebar-actions-active {
   background-color: var(--white-color);
+  box-shadow: var(--box-shadow);
   border-radius: 8px;
 }
 
@@ -69,5 +67,41 @@ body {
 
   .chat-card:hover {
     background-color: var(--light-grey-color);
+  }
+}
+
+.chat-context-wrapper {
+  width: 100%;
+  border: 1px solid var(--light-grey-color);
+  height: 95vh;
+  border-radius: 16px;
+  box-shadow: var(--box-shadow);
+}
+
+.chat-context-input-wrapper {
+  min-height: 170px;
+  border: 1px solid var(--light-grey-color);
+  box-shadow: 0px 2px 4px 0px #19213d14;
+  border-radius: 8px;
+
+  .chat-context-input-box {
+    width: 100%;
+
+    .MuiInput-underline:before {
+      border-bottom-color: #f0f2f5;
+    }
+
+    .MuiInput-underline:hover:before {
+      border-bottom-color: #f0f2f5;
+    }
+
+    .MuiInput-underline:after {
+      border-bottom-color: #eee;
+    }
+  }
+
+  .chip {
+    background-color: #f7f8fa;
+    border-radius: 8px;
   }
 }

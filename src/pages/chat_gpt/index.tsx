@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Box } from "@mui/material";
 import LeftSidebar from "../../components/chat_gpt/left_sidebar";
 import ChatContext from "./context";
+import ChatContextComponent from "../../components/chat_gpt/chat_context";
 import { ChatHistoryResponseType } from "../../services/types";
 
 export default function ChatGPT() {
@@ -9,11 +10,20 @@ export default function ChatGPT() {
     []
   );
 
+  const [selectedContext, setSelectedContext] = useState<string | null>(null);
+
   return (
-    <ChatContext.Provider value={{ chatHistories, setChatHistories }}>
-      <Box m={2} display="flex" gap={2}>
+    <ChatContext.Provider
+      value={{
+        chatHistories,
+        setChatHistories,
+        setSelectedContext,
+        selectedContext,
+      }}
+    >
+      <Box m={2} display="flex">
         <LeftSidebar />
-        hiiiiii
+        <ChatContextComponent />
       </Box>
     </ChatContext.Provider>
   );

@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState, useCallback } from "react";
-import { Box, Alert, Stack } from "@mui/material";
+import { Box, Alert } from "@mui/material";
 import { memo } from "react";
 import ChatContext from "../../../pages/chat_gpt/context";
 import ChatHistoryLoader from "./ChatHistoryLoader";
 import ChatHistoryCard from "./ChatHistoryCard";
 import { fetchChatHistory } from "../../../services/api";
 import { ChatHistoryResponseType } from "../../../services/types";
+import { sortByDate } from "../../../utils";
 
 function ChatHistoryList() {
   const { chatHistories, setChatHistories } = useContext(ChatContext);
@@ -18,8 +19,11 @@ function ChatHistoryList() {
     const resp = await fetchChatHistory();
 
     if (resp?.data && setChatHistories) {
-      setChatHistories(resp.data);
-      setPinnedChats(resp.data.filter((chat) => chat.isPinned));
+      //sorting chat based on created at
+      const results = sortByDate<ChatHistoryResponseType>(resp?.data);
+
+      setChatHistories(results);
+      setPinnedChats(results.filter((chat) => chat.isPinned));
       setError("");
     } else if (resp?.error && setChatHistories) {
       setError(resp.error);

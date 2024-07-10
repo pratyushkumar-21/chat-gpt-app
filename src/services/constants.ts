@@ -1,4 +1,4 @@
-import { ChatHistoryResponseType } from "./types";
+import { ChatHistoryResponseType, ChatContextResponseType } from "./types";
 export const CHAT_HISTORIES: ChatHistoryResponseType[] = [
   {
     id: Date.now().toString(),
@@ -49,3 +49,23 @@ export const CHAT_HISTORIES: ChatHistoryResponseType[] = [
     isPinned: false,
   },
 ];
+
+export const CHAT_CONTEXT: ChatContextResponseType = {
+  id: "1",
+  title: "Sidebar Links List Wrapper",
+  created_at: new Date().toString(),
+  messages: [
+    {
+      id: Date.now().toString(),
+      created_at: new Date().toString(),
+      author: "user",
+      context: "What is sidebar",
+    },
+    {
+      id: Date.now().toString(),
+      created_at: new Date().toString(),
+      author: "system",
+      context: "Sidebar is lorem ipsum bro!!!",
+    },
+  ],
+};
