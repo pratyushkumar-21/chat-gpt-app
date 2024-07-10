@@ -1,5 +1,11 @@
+import ChatGPT from "./pages/chat_gpt";
+
 function App() {
-  return <div>hellow world</div>;
+  return (
+    <div>
+      <ChatGPT />
+    </div>
+  );
 }
 
 export default App;
