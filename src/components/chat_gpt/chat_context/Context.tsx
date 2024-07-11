@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useRef, useLayoutEffect } from "react";
 import { Stack, Divider, Typography } from "@mui/material";
 import UserMessage from "./UserMessage";
 import SystemMessage from "./SystemMessage";
@@ -7,6 +7,7 @@ import { sortByDate, getDateStatus } from "../../../utils";
 
 function Context(props: ChatContextResponseType) {
   const { messages } = props;
+  const ref = useRef<HTMLDivElement | null>(null);
   const sortedMessages = sortByDate(messages);
   const messageDateMap = new Map<string, MessageType[]>();
 
@@ -20,8 +21,16 @@ function Context(props: ChatContextResponseType) {
     }
   });
 
+  //this will scroll messages to bottom to see latest message on mounting
+  useLayoutEffect(() => {
+    if (ref.current) {
+      const element = ref.current;
+      element.scrollTop = element.scrollHeight;
+    }
+  }, []);
+
   return (
-    <Stack spacing={3} className="context-wrapper">
+    <Stack spacing={3} className="context-wrapper" ref={ref}>
       {[...messageDateMap.keys()].map((key) => (
         <>
           <Divider light>
