@@ -20,7 +20,8 @@ export const getFullname = (firstName: string, lastName?: string) =>
 export const getTime = (dateString: string) => {
   const date = new Date(dateString);
   let hours = date.getHours();
-  const minutes = date.getMinutes();
+  let minutes: number | string = date.getMinutes();
+  minutes = minutes >= 10 ? minutes : `0${minutes}`;
 
   const ampm = hours >= 12 ? "PM" : "AM";
 
@@ -52,3 +53,14 @@ export const getDateStatus = (dateString: string) => {
 
   return defaultValue;
 };
+
+export function debounce(cb: Function, delay: number) {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  return function (...args: any[]) {
+    clearTimeout(timeoutId);
+
+    timeoutId = setTimeout(() => {
+      cb(...args);
+    }, delay);
+  };
+}

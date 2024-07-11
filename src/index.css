@@ -54,7 +54,7 @@ body {
 .chat-history-list-wrapper {
   overflow-y: auto;
   scrollbar-width: none;
-
+  height: 50vh;
   .header-text {
     color: #bac0cc;
   }

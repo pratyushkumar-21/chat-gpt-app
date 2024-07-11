@@ -15,7 +15,6 @@ export default function CreateNewChat(props: CreateNewChatPropsType) {
   const handleCreateNewChat = () => {
     if (setSelectedContext) setSelectedContext("");
   };
-  console.log("new chat selectedContext == ", selectedContext);
 
   return (
     <Button

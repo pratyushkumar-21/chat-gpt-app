@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, Dispatch, SetStateAction } from "react";
 import {
   ChatHistoryResponseType,
   ProfileResponseType,
@@ -8,9 +8,9 @@ type ChatContextType = {
   chatHistories: ChatHistoryResponseType[];
   selectedContext: string | null;
   profile: ProfileResponseType | null;
-  setChatHistories?: (histories: ChatHistoryResponseType[]) => void;
-  setSelectedContext?: (context: string) => void;
-  setProfile?: (profile: ProfileResponseType | null) => void;
+  setChatHistories?: Dispatch<SetStateAction<ChatHistoryResponseType[]>>;
+  setSelectedContext?: Dispatch<SetStateAction<string | null>>;
+  setProfile?: Dispatch<SetStateAction<ProfileResponseType | null>>;
 };
 
 const ChatContext = createContext<ChatContextType>({

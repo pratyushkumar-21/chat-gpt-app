@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
 import Profile from "./Profile";
-import SearchInput from "../../common/SearchInput";
+import SearchChat from "./SearchChat";
 import LeftSidebarActions from "./LeftSidebarActions";
 import ChatHistoryList from "./ChatHistoryList";
 import TooltipIcon from "../../common/TooltipIcon";
@@ -42,7 +42,7 @@ function LeftSidebar() {
             />
           </Box>
         </Box>
-        <SearchInput />
+        <SearchChat />
         <LeftSidebarActions />
         <ChatHistoryList />
         <CreateNewChat />

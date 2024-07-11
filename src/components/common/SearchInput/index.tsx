@@ -1,13 +1,24 @@
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { Box, InputBase } from "@mui/material";
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search_icon.svg";
 import { ReactComponent as CommandIcon } from "../../../assets/icons/command_icon.svg";
+import { debounce } from "../../../utils";
 
-function SearchInput() {
-  const [search, setSearch] = useState("");
+type SearchInputPropsType = {
+  searchValue: string;
+  setSearchValue: (search: string) => void;
+};
+
+function SearchInput(props: SearchInputPropsType) {
+  const { searchValue, setSearchValue } = props;
+  const [search, setSearch] = useState(searchValue);
+
+  const debounced = useCallback(debounce(setSearchValue, 400), []);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e?.target?.value);
+    const value = e?.target?.value;
+    setSearch(value);
+    debounced(value);
   };
 
   return (

@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState, useContext } from "react";
 import { Box, Avatar, Typography, Alert } from "@mui/material";
 import ProfileLoader from "./ProfileLoader";
 import { fetchProfile } from "../../../services/api";
-import { ProfileResponseType } from "../../../services/types";
 import { getFullname } from "../../../utils";
 import ChatContext from "../../../pages/chat_gpt/context";
 

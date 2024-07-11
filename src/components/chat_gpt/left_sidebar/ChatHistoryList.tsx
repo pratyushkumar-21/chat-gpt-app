@@ -23,7 +23,6 @@ function ChatHistoryList() {
       const results = sortByDate<ChatHistoryResponseType>(resp?.data);
 
       setChatHistories(results);
-      setPinnedChats(results.filter((chat) => chat.isPinned));
       setError("");
     } else if (resp?.error && setChatHistories) {
       setError(resp.error);
@@ -37,6 +36,11 @@ function ChatHistoryList() {
   useEffect(() => {
     loadChatHistory();
   }, []);
+
+  //filtering pinned chat whenever chat histories will change
+  useEffect(() => {
+    setPinnedChats(chatHistories.filter((chat) => chat.isPinned));
+  }, [chatHistories]);
 
   // handled error occurs while fetching chat history
   if (!loading && error) return <Alert severity="error">{error}</Alert>;
