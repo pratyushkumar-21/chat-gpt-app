@@ -7,12 +7,7 @@
 
 * {
   box-sizing: border-box;
-}
-
-body {
   margin: 0;
-  /* background-color: #202020;
-  color: #eee; */
 }
 
 .keyboard-icons {
@@ -118,4 +113,28 @@ body {
   overflow-y: auto;
   height: 50vh;
   scrollbar-width: none;
+}
+
+.context-right-sidebar-wrapper {
+  width: 400px;
+  border-left: 1px solid #eee;
+  font-size: 12px;
+}
+
+.active-text {
+  color: black;
+}
+
+.ordered-list-wrapper {
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-card-wrapper {
+  height: 20px;
+  border: 1px solid #e3ebff;
+  background-color: #e3ebff;
+  border-radius: 36px;
 }

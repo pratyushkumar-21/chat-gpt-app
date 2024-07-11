@@ -24,7 +24,7 @@ function Context(props: ChatContextResponseType) {
     <Stack spacing={3} className="context-wrapper">
       {[...messageDateMap.keys()].map((key) => (
         <>
-          <Divider>
+          <Divider light>
             <Typography className="inactive-text">
               {getDateStatus(key)}
             </Typography>

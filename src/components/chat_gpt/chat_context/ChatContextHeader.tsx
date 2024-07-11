@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Box, Divider, Typography, Chip } from "@mui/material";
 import TooltipIcon from "../../common/TooltipIcon";
 import CreateNewChat from "../CreateNewChat";
@@ -6,7 +7,14 @@ import { ReactComponent as SettingsIcon } from "../../../assets/icons/settings_i
 import { ReactComponent as ArchiveIcon } from "../../../assets/icons/archive_icon.svg";
 import { ReactComponent as TrashIcon } from "../../../assets/icons/trash_icon.svg";
 
-function ChatContextHeader({ title }: { title: string }) {
+type ChatContextHeaderPropsType = {
+  title: string;
+  open: boolean;
+  toggleSidebar: () => void;
+};
+
+function ChatContextHeader(props: ChatContextHeaderPropsType) {
+  const { title, toggleSidebar, open } = props;
   return (
     <Box
       display="flex"
@@ -24,7 +32,11 @@ function ChatContextHeader({ title }: { title: string }) {
         <TooltipIcon title="settings" Icon={SettingsIcon} />
         <TooltipIcon title="delete" Icon={TrashIcon} />
         <TooltipIcon title="archive" Icon={ArchiveIcon} />
-        <TooltipIcon title="open right sidebar" Icon={RightSidebarIcon} />
+        <TooltipIcon
+          title={`${open ? "close" : "open"} right sidebar`}
+          Icon={RightSidebarIcon}
+          onClick={toggleSidebar}
+        />
       </Box>
     </Box>
   );

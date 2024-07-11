@@ -66,7 +66,7 @@ export const CHAT_HISTORIES: ChatHistoryResponseType[] = [
 
 export const CHAT_CONTEXT: ChatContextResponseType = {
   id: "1",
-  title: "Sidebar Links List Wrapper",
+  title: "About Sidebar",
   created_at: new Date().toString(),
   messages: [
     {
