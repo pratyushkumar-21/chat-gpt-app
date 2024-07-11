@@ -102,7 +102,7 @@ function ChatContextComponent() {
                   </Alert>
                 </Box>
               )}
-              <ChatContextInput />
+              <ChatContextInput setChatContext={setChatContext} />
             </Box>
           </Box>
           {chatContext && open && (

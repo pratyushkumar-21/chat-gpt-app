@@ -1,4 +1,12 @@
-import { memo, useState, useRef, useLayoutEffect, useContext } from "react";
+import {
+  memo,
+  useState,
+  useRef,
+  useLayoutEffect,
+  useContext,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import { Box, TextField, Typography, Stack, Button, Chip } from "@mui/material";
 import TooltipIcon from "../../common/TooltipIcon";
 import ChatContext from "../../../pages/chat_gpt/context";
@@ -8,15 +16,44 @@ import { ReactComponent as PhotoIcon } from "../../../assets/icons/photo_icon.sv
 import { ReactComponent as PaperclipIcon } from "../../../assets/icons/paperclip_icon.svg";
 import { ReactComponent as SendIcon } from "../../../assets/icons/send_icon.svg";
 import { ReactComponent as GridIcon } from "../../../assets/icons/grid_icon.svg";
+import { ChatContextResponseType, MessageType } from "../../../services/types";
 
-function ChatContextInput() {
+type ChatContextInputPropsType = {
+  setChatContext: Dispatch<SetStateAction<ChatContextResponseType | null>>;
+};
+
+function ChatContextInput(props: ChatContextInputPropsType) {
+  const { setChatContext } = props;
   const [message, setMesage] = useState("");
   const { selectedContext } = useContext(ChatContext);
 
   const inputRef = useRef<HTMLDivElement | null>(null);
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMesage(e.target.value);
+    setMesage(e.target.value.trimStart());
+  };
+
+  const handleSendMessage = () => {
+    if (selectedContext) {
+      setChatContext((prevChatContext) => {
+        if (!prevChatContext) return null;
+
+        const newMessage: MessageType = {
+          id: Date.now().toString(),
+          created_at: new Date().toString(),
+          author: "user",
+          content: message,
+        };
+
+        const newChatContext = {
+          ...prevChatContext,
+          messages: [...prevChatContext.messages, newMessage],
+        };
+
+        return newChatContext;
+      });
+    }
+    setMesage("");
   };
 
   //this will always focus on chat input
@@ -70,6 +107,7 @@ function ChatContextInput() {
           startIcon={<SendIcon />}
           size="small"
           disabled={!message.length}
+          onClick={handleSendMessage}
         >
           Send Message
         </Button>

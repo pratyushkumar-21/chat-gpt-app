@@ -1,3 +1,5 @@
+import { AUTHOR_SYSTEM, AUTHOR_USER } from "./constants";
+
 export interface APIResponse<T> {
   data?: T;
   error?: string;
@@ -18,7 +20,7 @@ export interface ChatHistoryResponseType {
   isPinned: boolean;
 }
 
-export type Author = "user" | "system";
+export type Author = typeof AUTHOR_USER | typeof AUTHOR_SYSTEM;
 
 export interface MessageType {
   id: string;
