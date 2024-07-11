@@ -6,7 +6,7 @@ import {
 } from "./types";
 import { CHAT_HISTORIES, CHAT_CONTEXT, USER_DATA } from "./constants";
 
-//this will simulate api call
+//this will simulate the api call
 const fetcher = <T>(data: T): Promise<APIResponse<T>> => {
   return new Promise((res) => {
     setTimeout(() => {

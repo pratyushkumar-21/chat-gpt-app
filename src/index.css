@@ -121,7 +121,7 @@ body {
 
 .context-wrapper {
   overflow-y: auto;
-  height: 50vh;
+  height: 55vh;
   scrollbar-width: none;
 }
 
