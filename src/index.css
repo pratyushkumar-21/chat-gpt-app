@@ -43,7 +43,7 @@ body {
   border-radius: 8px;
 }
 
-.not-active-text {
+.inactive-text {
   color: var(--light-blue-color);
 }
 
@@ -63,6 +63,12 @@ body {
     display: flex;
     align-items: center;
     border-radius: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .chat-card-active {
+    background-color: var(--light-grey-color);
   }
 
   .chat-card:hover {
@@ -78,12 +84,14 @@ body {
   box-shadow: var(--box-shadow);
 }
 
-.chat-context-input-wrapper {
-  min-height: 170px;
+.chat-context-box {
   border: 1px solid var(--light-grey-color);
   box-shadow: 0px 2px 4px 0px #19213d14;
   border-radius: 8px;
+}
 
+.chat-context-input-wrapper {
+  min-height: 170px;
   .chat-context-input-box {
     width: 100%;
 
@@ -104,4 +112,10 @@ body {
     background-color: #f7f8fa;
     border-radius: 8px;
   }
+}
+
+.context-wrapper {
+  overflow-y: auto;
+  height: 50vh;
+  scrollbar-width: none;
 }

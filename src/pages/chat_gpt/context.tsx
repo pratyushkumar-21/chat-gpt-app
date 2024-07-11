@@ -1,16 +1,22 @@
 import { createContext } from "react";
-import { ChatHistoryResponseType } from "../../services/types";
+import {
+  ChatHistoryResponseType,
+  ProfileResponseType,
+} from "../../services/types";
 
 type ChatContextType = {
   chatHistories: ChatHistoryResponseType[];
-  setChatHistories?: (histories: ChatHistoryResponseType[]) => void;
   selectedContext: string | null;
+  profile: ProfileResponseType | null;
+  setChatHistories?: (histories: ChatHistoryResponseType[]) => void;
   setSelectedContext?: (context: string) => void;
+  setProfile?: (profile: ProfileResponseType | null) => void;
 };
 
 const ChatContext = createContext<ChatContextType>({
   chatHistories: [],
   selectedContext: null,
+  profile: null,
 });
 
 export default ChatContext;

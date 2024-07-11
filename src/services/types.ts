@@ -3,6 +3,14 @@ export interface APIResponse<T> {
   error?: string;
 }
 
+export interface ProfileResponseType {
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  profile_url: string;
+}
+
 export interface ChatHistoryResponseType {
   id: string;
   created_at: string;
@@ -16,7 +24,7 @@ export interface MessageType {
   id: string;
   created_at: string;
   author: Author;
-  context: string;
+  content: string;
 }
 
 export interface ChatContextResponseType {

@@ -57,7 +57,7 @@ function LeftSidebarActions() {
                 </ListItemIcon>
                 <ListItemText
                   primary={title}
-                  className={!isActive ? "not-active-text" : undefined}
+                  className={!isActive ? "inactive-text" : undefined}
                 />
                 <Box
                   className={`keyboard-icons ${

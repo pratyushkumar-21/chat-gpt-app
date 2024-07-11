@@ -1,6 +1,11 @@
 import React from "react";
-import Box from "@mui/material/Box";
-import Drawer, { DrawerProps } from "@mui/material/Drawer";
+import {
+  Box,
+  Drawer,
+  DrawerProps,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 
 const drawerWidth = 300;
 
@@ -13,11 +18,14 @@ interface SidebarPropsType extends DrawerProps {
 export default function Sidebar(props: SidebarPropsType) {
   const { open, toggle, children, color = "#f7f8fa" } = props;
 
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Drawer
       open={open}
       onClose={toggle}
-      variant="persistent"
+      variant={isSmallScreen ? "temporary" : "persistent"}
       sx={{
         width: open ? drawerWidth : null,
       }}

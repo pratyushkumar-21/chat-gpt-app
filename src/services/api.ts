@@ -2,8 +2,9 @@ import {
   APIResponse,
   ChatHistoryResponseType,
   ChatContextResponseType,
+  ProfileResponseType,
 } from "./types";
-import { CHAT_HISTORIES, CHAT_CONTEXT } from "./constants";
+import { CHAT_HISTORIES, CHAT_CONTEXT, USER_DATA } from "./constants";
 
 //this will simulate api call
 const fetcher = <T>(data: T): Promise<APIResponse<T>> => {
@@ -14,8 +15,13 @@ const fetcher = <T>(data: T): Promise<APIResponse<T>> => {
       } else {
         res({ error: "Something went wrong!" });
       }
-    }, 1000);
+    }, 0);
   });
+};
+
+export const fetchProfile = async () => {
+  const resp = await fetcher<ProfileResponseType>(USER_DATA);
+  return resp;
 };
 
 export const fetchChatHistory = async () => {

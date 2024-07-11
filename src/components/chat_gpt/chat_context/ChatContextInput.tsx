@@ -11,7 +11,7 @@ import { ReactComponent as GridIcon } from "../../../assets/icons/grid_icon.svg"
 function ChatContextInput() {
   return (
     <Box
-      className="chat-context-input-wrapper"
+      className="chat-context-box chat-context-input-wrapper"
       p={2}
       display="flex"
       flexDirection="column"
@@ -20,7 +20,7 @@ function ChatContextInput() {
       flexWrap="wrap"
     >
       <Stack flexGrow={1} spacing={4}>
-        <Typography variant="body2" className="not-active-text">
+        <Typography variant="body2" className="inactive-text">
           How Can I help you?
         </Typography>
         <TextField
