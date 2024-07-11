@@ -41,6 +41,7 @@ export default function LinksCard() {
             alignItems="center"
             component="a"
             href={url}
+            target="_blank"
           >
             <StartIcon />
             {name}

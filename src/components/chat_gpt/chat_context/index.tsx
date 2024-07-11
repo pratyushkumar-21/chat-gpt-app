@@ -62,7 +62,7 @@ function ChatContextComponent() {
   if (!loading && error) return <div>{error}</div>;
 
   return (
-    <Box className="chat-context-wrapper" display="flex">
+    <Box className="chat-context-wrapper" display="flex" m={2}>
       <Box display="flex" flexDirection="column" width={"100%"}>
         {chatContext && (
           <>

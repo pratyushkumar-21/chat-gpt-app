@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Box, TextField, Typography, Stack, Button, Chip } from "@mui/material";
 import TooltipIcon from "../../common/TooltipIcon";
 import { ReactComponent as BookIcon } from "../../../assets/icons/book_icon.svg";
@@ -9,6 +9,12 @@ import { ReactComponent as SendIcon } from "../../../assets/icons/send_icon.svg"
 import { ReactComponent as GridIcon } from "../../../assets/icons/grid_icon.svg";
 
 function ChatContextInput() {
+  const [message, setMesage] = useState("");
+
+  const handleMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMesage(e.target.value);
+  };
+
   return (
     <Box
       className="chat-context-box chat-context-input-wrapper"
@@ -27,6 +33,8 @@ function ChatContextInput() {
           variant="standard"
           multiline
           className="chat-context-input-box"
+          value={message}
+          onChange={handleMessageChange}
         />
       </Stack>
       <Box
@@ -42,7 +50,7 @@ function ChatContextInput() {
           <TooltipIcon title="microphone" Icon={MicrophoneIcon} />
           <TooltipIcon title="grid" Icon={GridIcon} />
         </Stack>
-        <Button variant="contained" startIcon={<SendIcon />}>
+        <Button variant="contained" startIcon={<SendIcon />} size="small">
           Send Message
         </Button>
       </Box>

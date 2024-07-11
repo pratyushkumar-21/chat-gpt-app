@@ -27,7 +27,7 @@ export default function ChatGPT() {
         setProfile,
       }}
     >
-      <Box m={2} display="flex">
+      <Box display="flex">
         <LeftSidebar />
         <ChatContextComponent />
       </Box>

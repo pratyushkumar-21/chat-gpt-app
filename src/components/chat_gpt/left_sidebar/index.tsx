@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
-import Sidebar from "../../common/sidebar";
 import Profile from "./Profile";
 import SearchInput from "../../common/SearchInput";
 import LeftSidebarActions from "./LeftSidebarActions";
@@ -24,23 +23,35 @@ function LeftSidebar() {
           <TooltipIcon title="open sidebar" Icon={LeftSidebarIcon} />
         </Box>
       )}
-      <Sidebar open={open} toggle={toggleSidebar}>
-        <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Profile />
-          <Box display="flex" gap={1} alignItems="baseline">
-            <TooltipIcon title="settings" Icon={SettingsIcon} />
-            <TooltipIcon
-              title="close sidebar"
-              Icon={LeftSidebarIcon}
-              onClick={toggleSidebar}
-            />
+      {open && (
+        <Box
+          display="flex"
+          flexDirection="column"
+          className="left-sidebar-container"
+          p={3}
+          gap={2}
+        >
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Profile />
+            <Box display="flex" gap={1} alignItems="baseline">
+              <TooltipIcon title="settings" Icon={SettingsIcon} />
+              <TooltipIcon
+                title="close sidebar"
+                Icon={LeftSidebarIcon}
+                onClick={toggleSidebar}
+              />
+            </Box>
           </Box>
+          <SearchInput />
+          <LeftSidebarActions />
+          <ChatHistoryList />
+          <CreateNewChat />
         </Box>
-        <SearchInput />
-        <LeftSidebarActions />
-        <ChatHistoryList />
-        <CreateNewChat />
-      </Sidebar>
+      )}
     </>
   );
 }
