@@ -14,9 +14,9 @@ export const USER_DATA: ProfileResponseType = {
 
 export const CHAT_HISTORIES: ChatHistoryResponseType[] = [
   {
-    id: Date.now().toString(),
+    id: "1",
     created_at: new Date().toString(),
-    title: "Sidebar Links List Wrapperres Give me 10 ways to create an res",
+    title: "About sidebar",
     isPinned: true,
   },
   {

@@ -13,7 +13,7 @@ export default function ChatGPT() {
     []
   );
 
-  const [selectedContext, setSelectedContext] = useState<string | null>(null);
+  const [selectedContext, setSelectedContext] = useState<string | null>("1");
   const [profile, setProfile] = useState<ProfileResponseType | null>(null);
 
   return (

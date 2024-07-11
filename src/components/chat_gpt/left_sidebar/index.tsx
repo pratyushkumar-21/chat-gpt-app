@@ -19,7 +19,7 @@ function LeftSidebar() {
   return (
     <>
       {!open && (
-        <Box onClick={toggleSidebar} p={2}>
+        <Box onClick={toggleSidebar} ml={2} mt={4}>
           <TooltipIcon title="open sidebar" Icon={LeftSidebarIcon} />
         </Box>
       )}

@@ -10,6 +10,7 @@ import {
 import ChatContextHeader from "./ChatContextHeader";
 import ContextRightSidebar from "./ContextRightSidebar";
 import Context from "./Context";
+import ChatContextLoader from "./ChatContextLoader";
 import ChatContextInput from "./ChatContextInput";
 import ChatContext from "../../../pages/chat_gpt/context";
 import { fetchChatContext } from "../../../services/api";
@@ -57,46 +58,58 @@ function ChatContextComponent() {
     setOpen(false);
   }, [selectedContext]);
 
-  if (loading) return <div>Loading...</div>;
-
-  if (!loading && error) return <div>{error}</div>;
-
   return (
     <Box className="chat-context-wrapper" display="flex" m={2}>
-      <Box display="flex" flexDirection="column" width={"100%"}>
-        {chatContext && (
-          <>
-            <ChatContextHeader
-              title={chatContext.title}
-              toggleSidebar={toggleSidebar}
-              open={open}
-            />
-            <Divider light />
-          </>
-        )}
+      {loading ? (
+        <ChatContextLoader />
+      ) : !loading && error ? (
         <Box
-          p={3}
-          mx={isSmallScreen ? 1 : 7}
           display="flex"
-          flexDirection="column"
-          flexGrow={1}
-          justifyContent={chatContext ? "space-between" : "end"}
+          justifyContent="center"
+          height={`80vh`}
+          alignItems="center"
         >
-          {chatContext && <Context {...chatContext} />}
-          {!chatContext && (
-            <Box m="auto">
-              <Alert severity="info" icon={false}>
-                <Typography variant="h4" className="inactive-text">
-                  Start New Chat
-                </Typography>
-              </Alert>
-            </Box>
-          )}
-          <ChatContextInput />
+          <Alert severity="error">{error}</Alert>
         </Box>
-      </Box>
-
-      {chatContext && open && <ContextRightSidebar title={chatContext.title} />}
+      ) : (
+        <>
+          <Box display="flex" flexDirection="column" width={"100%"}>
+            {chatContext && (
+              <>
+                <ChatContextHeader
+                  title={chatContext.title}
+                  toggleSidebar={toggleSidebar}
+                  open={open}
+                />
+                <Divider light />
+              </>
+            )}
+            <Box
+              p={3}
+              mx={isSmallScreen ? 1 : 7}
+              display="flex"
+              flexDirection="column"
+              flexGrow={1}
+              justifyContent={chatContext ? "space-between" : "end"}
+            >
+              {chatContext && <Context {...chatContext} />}
+              {!chatContext && (
+                <Box m="auto">
+                  <Alert severity="info" icon={false}>
+                    <Typography variant="h4" className="inactive-text">
+                      Start New Chat
+                    </Typography>
+                  </Alert>
+                </Box>
+              )}
+              <ChatContextInput />
+            </Box>
+          </Box>
+          {chatContext && open && (
+            <ContextRightSidebar title={chatContext.title} />
+          )}
+        </>
+      )}
     </Box>
   );
 }

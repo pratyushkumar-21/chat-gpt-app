@@ -15,7 +15,7 @@ const fetcher = <T>(data: T): Promise<APIResponse<T>> => {
       } else {
         res({ error: "Something went wrong!" });
       }
-    }, 0);
+    }, 2000);
   });
 };
 

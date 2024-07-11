@@ -1,6 +1,7 @@
-import { memo, useState } from "react";
+import { memo, useState, useRef, useLayoutEffect, useContext } from "react";
 import { Box, TextField, Typography, Stack, Button, Chip } from "@mui/material";
 import TooltipIcon from "../../common/TooltipIcon";
+import ChatContext from "../../../pages/chat_gpt/context";
 import { ReactComponent as BookIcon } from "../../../assets/icons/book_icon.svg";
 import { ReactComponent as MicrophoneIcon } from "../../../assets/icons/microphone_icon.svg";
 import { ReactComponent as PhotoIcon } from "../../../assets/icons/photo_icon.svg";
@@ -10,10 +11,23 @@ import { ReactComponent as GridIcon } from "../../../assets/icons/grid_icon.svg"
 
 function ChatContextInput() {
   const [message, setMesage] = useState("");
+  const { selectedContext } = useContext(ChatContext);
+
+  const inputRef = useRef<HTMLDivElement | null>(null);
 
   const handleMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMesage(e.target.value);
   };
+
+  //this will always focus on chat input
+  useLayoutEffect(() => {
+    if (inputRef.current) {
+      const element = inputRef.current;
+      element.focus();
+    }
+
+    setMesage("");
+  }, [selectedContext]);
 
   return (
     <Box
@@ -35,6 +49,7 @@ function ChatContextInput() {
           className="chat-context-input-box"
           value={message}
           onChange={handleMessageChange}
+          inputRef={inputRef}
         />
       </Stack>
       <Box
@@ -50,7 +65,12 @@ function ChatContextInput() {
           <TooltipIcon title="microphone" Icon={MicrophoneIcon} />
           <TooltipIcon title="grid" Icon={GridIcon} />
         </Stack>
-        <Button variant="contained" startIcon={<SendIcon />} size="small">
+        <Button
+          variant="contained"
+          startIcon={<SendIcon />}
+          size="small"
+          disabled={!message.length}
+        >
           Send Message
         </Button>
       </Box>
